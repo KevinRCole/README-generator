@@ -21,7 +21,8 @@ for (let i=0; i < licenseList.length; i++) {
   }
 
   // creatie first object of array to cover situtation where user selects "None" for license
-  const choseNoLicense = {name: "None", value: "No URL", data: {name: "No license chosen.", description: "None."}};
+  // TA Jessica W helped me debug lines 25 through 27. 
+  const choseNoLicense = {name: "None", value: "No URL"};
   licenseNames.unshift(choseNoLicense);
   console.log(licenseNames);
   
@@ -29,10 +30,14 @@ for (let i=0; i < licenseList.length; i++) {
 
 generateLicenseList();
 
+// I came up with idea of using a second fetch to get move complete license data from GitHub API after user makes license selection,
+// but I couldn't get the second fetch to work correctly, after trying it in different locations in the code.  So I asked TA Jessica W
+// for help, and she provided the code for the async function, lines 35 through 39.
+
 async function fetchLicense(answers) {
     const response = await fetch(answers.license);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return { ...answers, data}
 } 
 
@@ -83,11 +88,21 @@ inquirer
 
   .then((answers) => {
     
-    // added if statement to only do second fetch if user selects a license instead of "none"
-    
-    let data = fetchLicense(answers)
+    // I came up with idea of having two fetches, to get complete license API data from Github, but could not get them to work.
+    // So I asked TA Jessica W for help.  She came up with idea of having two .then functions, which I did not consider, and she provided the code for the first .then function.
+    // I subsequently tried to include an if statement in the first .then function, to cover situation in which a user chooses not to select a license,
+    // but I couldn't get it to work, so I asked Jessica for help again.  Jessica provided lines 97 through 106.  The use of the spread operator here is
+    // is something I did not consider.
+
+    if (answers.license !== "No URL") {
+        let data = fetchLicense(answers);
     
         return data;
+    } else {
+      return { 
+        ...answers, data: {name: "None", description: "No license selected" },
+      };
+    }
   })
 
   .then((answers) => {

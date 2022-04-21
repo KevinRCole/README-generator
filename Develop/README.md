@@ -1,12 +1,12 @@
-# fjklasd    
+# fjdks    
   
   ## Description
   
-  fjdksa
+  jfdk
   
   ## License
   
   
-  GNU Affero General Public License v3.0
+  BSD 2-Clause "Simplified" License
   
-  Permissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available. 
+  A permissive license that comes in two variants, the <a href="/licenses/bsd-2-clause/">BSD 2-Clause</a> and <a href="/licenses/bsd-3-clause/">BSD 3-Clause</a>. Both have very minute differences to the MIT license. 
