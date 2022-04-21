@@ -1,8 +1,6 @@
 // TODO: Include packages needed for this application
 
-// const inquirer = require("inquirer");
-// const fs = require("fs");
-
+// have to use "import" instead of "require", in order to also use fetch
 import inquirer from 'inquirer';
 import fs from 'fs';
 import fetch from 'node-fetch';
@@ -11,16 +9,22 @@ import fetch from 'node-fetch';
 const response = await fetch('https://api.github.com/licenses');
 const data = await response.json();
 const licenseList = data;
-console.log(licenseList);
 
-// function to generate an array of objects of the urls of the licenses and the formal names of the licenses
+
+// generate an array of objects consisting of the formal names and url's of the licenses
 const licenseNames = [];
 const generateLicenseList = function() {
 for (let i=0; i < licenseList.length; i++) {
     let eachLicense = {name: licenseList[i].name, value: licenseList[i].url}
     // let eachLicense = {value: licenseList[i].url, name: licenseList[i].name}
     licenseNames.push(eachLicense);
-    }
+  }
+
+  // creatie first object of array to cover situtation where user selects "None" for license
+  const choseNoLicense = {name: "None", value: "No URL", data: {name: "No license chosen.", description: "None."}};
+  licenseNames.unshift(choseNoLicense);
+  console.log(licenseNames);
+  
 };
 
 generateLicenseList();
@@ -30,7 +34,9 @@ async function fetchLicense(answers) {
     const data = await response.json();
     console.log(data);
     return { ...answers, data}
-}
+} 
+
+
 // Start building the guts of the README.md file
 
 const generateREADME = (data) =>
@@ -42,6 +48,7 @@ const generateREADME = (data) =>
   ${data.projectDescription}
   
   ## License
+  
   
   ${data.data.name}
   
@@ -76,8 +83,10 @@ inquirer
 
   .then((answers) => {
     
+    // added if statement to only do second fetch if user selects a license instead of "none"
+    
     let data = fetchLicense(answers)
-       
+    
         return data;
   })
 
