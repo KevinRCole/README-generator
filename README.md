@@ -29,11 +29,11 @@
 
   ## Usage
 
-  Once you are running the script, simply respond to the prompts for information, and the program will generate a README.md for you, using that information.
+  Once you are running the script, simply respond to the prompts for information, and the program will generate a README.md for you, using that information.  The file will be saved under the name "SAMPLE-README.md" in your copy of the Develop folder.
 
   ## Contributing
 
-  Please contact me by email or via my Github account if you would like to contribute to this proproject.  My name is Kevin Cole, my email and Github links are printed below.
+  Please contact me by email or via my Github account if you would like to contribute to this proproject.  My name is Kevin Cole, my email and Github links are printed below, in the Questions section of this README.md.
 
   ## License
   
@@ -43,7 +43,7 @@
 
   ## Tests
 
-  undefined
+  You can test this project by running it from your terminal, following the instructions in the Installation and Usage sections of this README.md, above.
 
   ## Questions
   

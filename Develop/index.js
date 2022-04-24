@@ -90,7 +90,7 @@ const generateREADME = (data) =>
 
   ## Tests
 
-  ${data.test}
+  ${data.tests}
 
   ## Questions
   
