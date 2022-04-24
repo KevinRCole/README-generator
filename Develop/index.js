@@ -72,9 +72,15 @@ const generateREADME = (data) =>
   
   ## Installation
 
+  ${data.installation}
+
   ## Usage
 
+  ${data.usage}
+
   ## Contributing
+
+  ${data.contributing}
 
   ## License
   
@@ -84,12 +90,13 @@ const generateREADME = (data) =>
 
   ## Tests
 
+  ${data.test}
+
   ## Questions
   
   Please contact me if you have questions or if you wish to contribute to this project.
 
   ${data.emailContact}
-
 
   ${data.githubProfile}
 
@@ -128,7 +135,7 @@ inquirer
     },
     {
       type: "input",
-      name: "Contributing",
+      name: "contributing",
       message:  "Please write a sentence notifying users how they can contribute to this project if they would like."
     },
     {
